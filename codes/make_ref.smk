@@ -64,7 +64,7 @@ rule map:
         PRIMER_COORDINATE
 
     shell:
-        'bowtie2 -N1 -L 9 -x ${params.REF} -f {input} '\
+        'bowtie2 -N1 -L 9 -x {params.REF} -f {input} '\
         '| samtools view -b '\
         '| bedtools bamtobed -i - '\
         '> {output}'
