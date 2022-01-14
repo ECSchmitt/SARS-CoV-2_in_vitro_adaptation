@@ -1,5 +1,5 @@
 # only variable that should be changed
-REF_PATH = '/mnt/c/users/ericc/documents/SARS-CoV-2_in_vitro_adaptation'
+REF_PATH = '/mnt/c/users/ericc/documents/SARS-CoV-2_in_vitro_adaptation/ref'
 
 
 
@@ -64,7 +64,7 @@ rule map:
         PRIMER_COORDINATE
 
     shell:
-        'bowtie2 -N1 -L 9 -x ${REF} -f {input} '\
+        'bowtie2 -N1 -L 9 -x ${params.REF} -f {input} '\
         '| samtools view -b '\
         '| bedtools bamtobed -i - '\
-        '> primers.bed'
+        '> {output}'
