@@ -176,7 +176,7 @@ rule trim_primers_from_alignment_with_bamutils:
     shell:
         'bam trimbam {input} - -L 30 -R 0 --clip '\
         '| samtools fixmate - - '\
-        '| samtools calmd -Q - {params.REF_FA} '\
+        '| samtools calmd - {params.REF_FA} '\
         '> {output} '
 
 
