@@ -1,23 +1,31 @@
-# only variable needed to change
+# Importing required packages
 import os
-PROJECT_PATH = os.path.abspath('../')
-
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import glob
-import os
 import numpy as np
 plt.rc('axes', labelsize=15)
 plt.rc('xtick', labelsize=15)
 plt.rc('ytick', labelsize=15)
 
+
+# setting path relative to project structure
+PROJECT_PATH = os.path.abspath('../')
+
+# path to code executed by this snakefile
 CODE_PATH = PROJECT_PATH + '/codes'
+
+# path to reference files (genome, primers) required for trimming, alignement etc.
 REF = PROJECT_PATH + '/ref/Bavtpat1_complete.fa'
 PRIMERS = PROJECT_PATH + '/ref/primers.txt'
-R1 = PROJECT_PATH + '/data/{SAMPLENAME}_L001_R1_001.fastq.gz'
-R2 = PROJECT_PATH + '/data/{SAMPLENAME}_L001_R2_001.fastq.gz'
+
+# path to raw sequencing data with automatic extraction of samplenames
+R1 = PROJECT_PATH + '/data/{SAMPLENAME}_1.fastq'
+R2 = PROJECT_PATH + '/data/{SAMPLENAME}_2.fastq'
 SAMPLENAMES, = glob_wildcards(R1)
+
+# path to results folder and textfile outputs
 RESULT_PATH = PROJECT_PATH + '/results/{SAMPLENAME}'
 TRIMMED_FQ = RESULT_PATH + '/trimmed.fq.gz'
 MERGED_FQ = RESULT_PATH + '/merged.fq.gz'
@@ -26,12 +34,13 @@ TRIMMED_BAM = RESULT_PATH + '/trimmed.bam'
 SORTED_BAM = RESULT_PATH + '/sorted.bam'
 DEPTH_FILE = RESULT_PATH + '/coverage.per-base.bed.gz'
 SNP_FILE = RESULT_PATH + '/variants.snp'
-SEQ_LOGO = RESULT_PATH + '/MBCS_seqlogo.png'
+COVERAGE_STAT = PROJECT_PATH + '/results/coverage_stat.csv'
 FREQ_FILE = RESULT_PATH + '/MBCS_freq.tsv'
+
+# paths to all figure outputs of this script
+SEQ_LOGO = RESULT_PATH + '/MBCS_seqlogo.png'
 COVERAGE_PNG_PER_SAMPLE = RESULT_PATH + '/coverage.pdf'
 COVERAGE_PNG = PROJECT_PATH + '/results/coverage.png'
-COVERAGE_STAT = PROJECT_PATH + '/results/coverage_stat.csv'
-
 rule all:
     input:
         expand(SNP_FILE, SAMPLENAME = SAMPLENAMES),
