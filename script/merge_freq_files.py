@@ -5,8 +5,9 @@ from collections import defaultdict
 def MBCS_freq_to_dict(freq_files):
   MBCS_dict = {}
   for freq_file in freq_files:
-    sampleID = freq_file.rsplit('/')[1].rsplit('_')[0]
-    infile = open(freq_file,'r') 
+    sampleID = freq_file.rsplit('/')[2]
+    infile = open(freq_file,'r')
+    print(infile)
     MBCS_dict[sampleID] = defaultdict(float)
     for line in infile.readlines():
       if "freq" in line: continue
@@ -29,8 +30,8 @@ def write_MBCS_freq(MBCS_list, MBCS_dict, out_filename):
   outfile.close()
    
 def main():
-  freq_files = glob.glob("Cov2_fastq/*/MBCS_freq.tsv")
-  out_filename = "results/all_MBCS_freq.tsv"
+  freq_files = glob.glob("../results/*/MBCS_freq.tsv")
+  out_filename = "../results/all_MBCS_freq.tsv"
   MBCS_dict = MBCS_freq_to_dict(freq_files)
   MBCS_list = []
   [MBCS_list.extend(MBCS_dict[sampleID].keys()) for sampleID in MBCS_dict.keys()]
