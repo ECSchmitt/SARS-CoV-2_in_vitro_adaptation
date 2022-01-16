@@ -44,7 +44,7 @@ format_varfreq <- function(VarFreq){
   return (as.numeric(str_replace(VarFreq, '%', ''))/100)
   }
 
-snp_table <- read_tsv('results/all_variants.snp') %>%
+snp_table <- read_tsv('../results/all_variants.snp') %>%
                mutate(mut_type=mapply(classifying_mut_type, Cons)) %>%
                mutate(VarFreq=mapply(format_varfreq, VarFreq)) %>%
                mutate(Sample=factor(Sample, levels=unique(rev(Sample)))) %>%
