@@ -7,7 +7,6 @@ def MBCS_freq_to_dict(freq_files):
   for freq_file in freq_files:
     sampleID = freq_file.rsplit('/')[2]
     infile = open(freq_file,'r')
-    print(infile)
     MBCS_dict[sampleID] = defaultdict(float)
     for line in infile.readlines():
       if "freq" in line: continue
