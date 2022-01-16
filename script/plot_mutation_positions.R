@@ -49,4 +49,4 @@ snp_table <- read_tsv('results/all_variants.snp') %>%
                mutate(VarFreq=mapply(format_varfreq, VarFreq)) %>%
                mutate(Sample=factor(Sample, levels=unique(rev(Sample)))) %>%
                select(Sample, Position, Cons, mut_type, VarFreq)
-plot_mut_freq_on_genome(snp_table, 'graph/mut_freq_genome.png')
+plot_mut_freq_on_genome(snp_table, 'results/figures/mut_freq_genome.png')
