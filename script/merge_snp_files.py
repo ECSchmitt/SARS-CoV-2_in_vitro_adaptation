@@ -8,7 +8,7 @@ def main():
 	outfile = open(out_filename,'w')
 	header = 1
 	for snp_file in sorted(snp_files, key=lambda x:int(x.rsplit('/')[1].rsplit('_')[0].replace('P',''))):
-		sampleID = snp_file.rsplit('/')[1].rsplit('_')[0]
+		sampleID = snp_file.rsplit('/')[2]
 		infile = open(snp_file,'r')
 		for line in infile.readlines():
 			if "Chrom" in line and header == 1:
