@@ -42,7 +42,7 @@ format_varfreq <- function(VarFreq){
 
 
 
-snp_table <- read_tsv('results/all_variants.snp') %>%
+snp_table <- read_tsv('../results/all_variants.snp') %>%
                mutate(mut_type=mapply(classifying_mut_type, Cons)) %>%
                mutate(VarFreq=mapply(format_varfreq, VarFreq)) %>%
                mutate(Sample=factor(Sample, levels=unique(rev(Sample)))) %>%
@@ -80,7 +80,7 @@ genomeplot <- ggplot(CoVgenome,
         )
 
 
-png("graph/SARS-CoV-2_mut_freq_genome.png",
+png("../results/figures/SARS-CoV-2_mut_freq_genome.png",
     width = 27, height = 44, units = "cm", res = 500)
 t <- ggarrange(genomeplot, p + font("xy.text", size = 13)+ font("x", size = 13), heights = c(0.27,0.73),
                     ncol = 1, nrow = 2, align = "v")
