@@ -85,10 +85,9 @@ png("../results/figures/SARS-CoV-2_mut_freq_genome.png",
 t <- ggarrange(genomeplot, p + font("xy.text", size = 13)+ font("x", size = 13), heights = c(0.27,0.73),
                     ncol = 1, nrow = 2, align = "v")
 annotate_figure(t,
-                #top = text_grob("Visualizing SARS-CoV-2 Genome", color = "black", face = "bold", size = 14),
-                #bottom = text_grob(" anything could be here ", color = "blue",
-                #                   hjust = 1, x = 1, face = "italic", size = 10),
-                #left = text_grob("anything", color = "green", rot = 90),
-                #fig.lab = "Figure 1", fig.lab.face = "bold"
+                top = text_grob("Visualizing SARS-CoV-2 Genome",
+                                color = "black",
+                                face = "bold",
+                                size = 14),
                 )
 dev.off()
