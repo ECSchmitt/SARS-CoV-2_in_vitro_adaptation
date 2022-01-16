@@ -162,6 +162,7 @@ rule sort_bam_with_samtools:
         'samtools sort {input} > {output};'\
         ' samtools index {output}'
 
+#removed invalid option -Q
 rule trim_primers_from_alignment_with_bamutils:
     input:
         BAM
