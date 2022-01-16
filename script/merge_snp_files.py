@@ -7,7 +7,7 @@ def main():
 	print ("writing %s" % out_filename)
 	outfile = open(out_filename,'w')
 	header = 1
-	for snp_file in sorted(snp_files, key=lambda x:int(x.rsplit('/')[1].rsplit('_')[0].replace('P',''))):
+	for snp_file in snp_files):
 		sampleID = snp_file.rsplit('/')[2]
 		infile = open(snp_file,'r')
 		for line in infile.readlines():
