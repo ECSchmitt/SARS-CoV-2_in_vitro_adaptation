@@ -3,7 +3,7 @@ import glob
 
 def main():
 	snp_files = glob.glob("SNP/*/*.snp")
-	out_filename = "results/all_variants.snp"
+	out_filename = "../results/all_variants.snp"
 	print ("writing %s" % out_filename)
 	outfile = open(out_filename,'w')
 	header = 1
