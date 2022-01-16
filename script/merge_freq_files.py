@@ -22,7 +22,7 @@ def write_MBCS_freq(MBCS_list, MBCS_dict, out_filename):
   print ("writing: %s" % out_filename)
   outfile = open(out_filename,'w')
   outfile.write("\t".join(["sampleID", "MBCS", "freq"])+"\n")
-  for sampleID in sorted(MBCS_dict.keys(), key=lambda x:int(x[1::])):
+  for sampleID in sorted(MBCS_dict.keys()):
     for MBCS in MBCS_list:
       freq = MBCS_dict[sampleID][MBCS]
       if MBCS == "-----": MBCS = "deletion"
